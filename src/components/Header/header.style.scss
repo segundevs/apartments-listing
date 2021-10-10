@@ -1,0 +1,94 @@
+@import "../../styles/variables";
+@import "../../styles/breakpoints";
+
+.header {
+  position: fixed;
+  background-color: $white;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.navbar {
+  width: 80%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+
+  .nav__brand {
+    height: 500%;
+    margin-left: -55px;
+  }
+}
+
+.nav__links {
+  display: none;
+
+  @include md {
+    display: flex;
+  }
+
+  .nav__link {
+    @include md {
+      margin-left: 30px;
+      text-decoration: none;
+    }
+  }
+}
+
+.nav__link {
+  color: $text-secondary;
+  padding: 8px 15px;
+
+  &:hover {
+    border-bottom: 2px solid $secondary-color;
+  }
+}
+
+.nav__links-mobile {
+  display: flex;
+  width: 50vw;
+  background-color: $white;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 60px;
+  right: 0;
+  bottom: 0;
+
+  @include md {
+    display: none;
+  }
+
+  .nav__link {
+    margin-top: 50px;
+    text-decoration: none;
+  }
+}
+
+.menu__icon {
+  cursor: pointer;
+  @include md {
+    display: none;
+  }
+}
+
+.login {
+  background-color: $primary-color;
+  color: $white;
+  width: 100%;
+  text-align: center;
+
+  &:hover {
+    background-color: $white;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+  }
+
+  @include md {
+    border-radius: 5px;
+  }
+}
