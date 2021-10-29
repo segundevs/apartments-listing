@@ -14,12 +14,16 @@
 }
 
 .about__container-images {
-  display: none;
+  display: flex;
+  position: relative;
+  width: 90%;
+  margin: 20px auto;
 
   @include md {
     position: relative;
     display: flex;
     width: 50%;
+    margin: 0;
   }
 }
 
@@ -77,15 +81,25 @@
 .image-1,
 .image-4 {
   margin-bottom: 10px;
-  width: 180px;
-  height: 180px;
+  width: 150px;
+  height: 120px;
+
+  @include md {
+    width: 180px;
+    height: 180px;
+  }
 }
 
 .image-2,
 .image-3 {
   margin-bottom: 10px;
-  width: 180px;
-  height: 300px;
+  width: 150px;
+  height: 200px;
+
+  @include md {
+    width: 180px;
+    height: 300px;
+  }
 }
 
 .images-left {
@@ -100,12 +114,17 @@
 
 .img-location-icon {
   position: absolute;
-  right: 1px;
+  right: 4px;
   background-color: $secondary-color;
   color: $white;
   padding: 5px;
   border-radius: 20%;
-  bottom: 130px;
+  bottom: 90px;
+
+  @include md {
+    right: 1px;
+    bottom: 130px;
+  }
 }
 
 .search-input {

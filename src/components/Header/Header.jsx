@@ -15,10 +15,7 @@ const Header = () => {
        {/* <Link to="/" className="nav__brand"> */}
         <img src={logo} alt="brand-logo" className="nav__brand"/>
        {/* </Link> */}
-          
-
-      
-
+        
         <div className="navbar__links-container">
 
         <div className="nav__links">
@@ -26,6 +23,7 @@ const Header = () => {
           <Link to="/buy" className="nav__link">Buy</Link>
           <Link to="/sell" className="nav__link">Sell</Link>
           <Link to="/login" className="nav__link login">Login</Link>
+          <Link to="/signup" className="nav__link login">Sign up</Link>
         </div>
 
         <div className="menu__icon" onClick={() => setIsOpen(prev => !prev)}>
@@ -37,6 +35,7 @@ const Header = () => {
           <Link to="/buy" className="nav__link" onClick={() => setIsOpen(false)}>Buy</Link>
           <Link to="/sell" className="nav__link" onClick={() => setIsOpen(false)}>Sell</Link>
           <Link to="/login" className="nav__link login" onClick={() => setIsOpen(false)}>Login</Link>
+          <Link to="/signup" className="nav__link login" onClick={() => setIsOpen(false)}>Sign up</Link>
         </div>}
 
 
