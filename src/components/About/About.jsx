@@ -21,14 +21,14 @@ const About = () => {
         </div>
         <LocationOnIcon className="img-location-icon"/>
         <div className="search-input">
-          <input type="text" className="input-field" placeholder="Search property..." disabled/>
+          <input type="text" placeholder="Search property..." disabled/>
           <SearchIcon className="search-input-icon"/>
         </div>
       </div>
       <div className="about__container-text">
-        <h6 className="about__heading">About us</h6>
-        <h4 className="about__sub-heading">Helping people to find their home</h4>
-        <p className="about__text">
+        <h6>About us</h6>
+        <h4>Helping people to find their home</h4>
+        <p>
           Apartments can help you easily find a rent, sell or buy that you'll love. As with any new technology, building designers experiment and learn from each other in the pursuit of new solutions which can help you easily find your new home.
         </p>
         <Button />
