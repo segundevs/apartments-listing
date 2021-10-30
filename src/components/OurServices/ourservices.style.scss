@@ -38,11 +38,7 @@
 .services__grid {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: 1fr;
-
-  @include md {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  grid-template-columns: repeat(2, 1fr);
 
   @include lg {
     grid-template-columns: repeat(4, 1fr);
@@ -59,7 +55,8 @@
   text-align: center;
   padding: 20px;
 
-  &:hover {
+  &:hover,
+  &:active {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-bottom: 3px solid $primary-color;
     margin-bottom: 3px;
