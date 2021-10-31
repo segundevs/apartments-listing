@@ -7,6 +7,7 @@ import Buy from './pages/Buy/Buy';
 import Sell from './pages/Sell/Sell';
 import Login from './pages/Login/Login';
 import Details from './pages/Details/Details';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Details />
           </Route>
         </Switch>
+        <Footer />
       </div>
    </Router>
   );
