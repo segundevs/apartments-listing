@@ -1,0 +1,97 @@
+@import "../../styles/variables";
+@import "../../styles/breakpoints";
+
+.action__container {
+  width: 90%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+
+  @include md {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: 60px auto;
+  }
+}
+
+.action__container-images {
+  position: relative;
+  background-color: $hero-bg;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 100%;
+  align-items: right;
+  height: 180px;
+  order: 1;
+
+  @include md {
+    margin-top: 0;
+    width: 40%;
+    height: 220px;
+    order: 2;
+  }
+}
+
+.action__container-images img {
+  position: absolute;
+  right: 2px;
+  bottom: 0;
+  height: 250px;
+  object-fit: contain;
+
+  @include md {
+    height: 320px;
+  }
+}
+
+.action__container-text {
+  width: 90%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  order: 2;
+
+  h6 {
+    color: $primary-color;
+    font-weight: 900;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  h4 {
+    color: $text-primary;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+
+  p {
+    line-height: 24px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  @include md {
+    width: 50%;
+    align-items: flex-start;
+    margin-left: 0;
+    text-align: left;
+    order: 1;
+
+    h6 {
+      font-size: 1rem;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      text-align: left;
+    }
+  }
+}

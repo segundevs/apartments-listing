@@ -1,19 +1,28 @@
+import React from 'react';
 import Hero from '../../components/Hero/Hero';
-import CarouselContainer from '../../components/Carousel/Carousel';
+import ListedApartments from '../../components/ListedApartments/ListedApartments';
 import OurServices from '../../components/OurServices/OurServices';
-import About from '../../components/About/About';
+import AboutSection from '../../components/AboutSection/AboutSection';
+import Action from '../../components/Action/Action';
 import VideoComp from '../../components/VideoComp/VideoComp';
+import ClientReviews from '../../components/ClientReviews/ClientReviews';
+import GetListed from '../../components/GetListed/GetListed';
+
 import './home.style.scss';
+
 
 const Home = () => {
   return (
-    <>
+    <React.Fragment>
       <Hero />
-      <CarouselContainer />
+      <ListedApartments />
       <OurServices />
-      <About />
-      <VideoComp embedId="M6P6MleornA"/>
-    </>
+      <AboutSection />
+      <Action />
+      <VideoComp embedId="7x3Dz7idqCo"/>
+      <ClientReviews />
+      <GetListed />
+    </React.Fragment>
   )
 }
 
