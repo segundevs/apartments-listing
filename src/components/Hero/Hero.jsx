@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import heroImage from '../../images/hero-image-1.png';
 import masterCard from '../../images/mastercard-logo.png';
@@ -9,12 +8,7 @@ import visa from '../../images/visa-logo.png';
 import trustpilot from '../../images/trustpilot-logo.png';
 import './hero.style.scss';
 
-const Hero = () => {
-
-  const [location, setLocation] = useState('abia');
-  const [type, setType] = useState('bungalow');
-  const [price, setPrice] = useState('5000');
-
+const Hero = ({location, setLocation, price, setPrice, type, setType}) => {
 
   return (
     <div className="hero__container">
@@ -33,6 +27,7 @@ const Hero = () => {
           <div className="location">
             <h4 className="location__header">Location</h4>
             <select className="location__select" value={location} onChange={(e)=>setLocation(e.target.value)}>
+            <option value="all">All</option>
             <option value="abia">Abia</option>
             <option value="adamawa">Adamawa</option>
             <option value="akwa-ibom">Akwa-Ibom</option>
@@ -47,6 +42,7 @@ const Hero = () => {
           <div className="type">
             <h4 className="type__header">Property Type</h4>
             <select className="type__select" value={type} onChange={(e)=>setType(e.target.value)}>
+            <option value="all">All</option>
             <option value="bungalow">Bungalow</option>
             <option value="flat">Flat</option>
             <option value="duplex">Duplex</option>
@@ -63,6 +59,7 @@ const Hero = () => {
           <div className="price">
           <h4 className="price__header">Max Price</h4>
             <select className="price__select" value={price} onChange={(e)=>setPrice(e.target.value)}>
+              <option value="all">All</option>
               <option value="5000">$5000</option>
               <option value="10000">$10,000</option>
               <option value="15000">$15,000</option>

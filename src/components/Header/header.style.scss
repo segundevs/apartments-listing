@@ -8,6 +8,7 @@
   top: 0;
   left: 0;
   right: 0;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 
 .navbar {
@@ -51,7 +52,7 @@
 
 .nav__links-mobile {
   display: flex;
-  width: 50vw;
+  width: 100vw;
   background-color: $white;
   flex-direction: column;
   align-items: center;
@@ -67,33 +68,40 @@
   .nav__link {
     margin-top: 50px;
     text-decoration: none;
+    color: $primary-color;
   }
 }
 
 .menu__icon {
   cursor: pointer;
+
   @include md {
     display: none;
   }
 }
 
 .login {
-  background-color: $primary-color;
+  background-color: $white;
+  border: 1px solid $primary-color;
   color: $white;
-  width: 100%;
+  width: 50%;
+  margin: 0 auto;
   text-align: center;
+  border-radius: 5px;
 
   @include md {
+    background-color: $primary-color;
     width: 100px;
   }
 
   &:hover {
-    background-color: $white;
-    color: $primary-color;
+    background-color: $primary-color;
+    color: $white;
     border: 1px solid $primary-color;
-  }
 
-  @include md {
-    border-radius: 5px;
+    @include md {
+      background-color: $white;
+      color: $primary-color;
+    }
   }
 }
