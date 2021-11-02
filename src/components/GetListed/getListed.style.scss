@@ -1,0 +1,89 @@
+@import "../../styles/variables";
+@import "../../styles/breakpoints";
+
+.getListed__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  background-color: $hero-bg;
+  height: 200px;
+  margin: 20px auto;
+  border-radius: 10px;
+
+  @include md {
+    width: 80%;
+    height: 250px;
+    margin: 100px auto 40px auto;
+  }
+
+  img {
+    display: none;
+
+    @include md {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 320px;
+      width: 55%;
+      object-fit: cover;
+    }
+  }
+}
+
+.contact__form {
+  width: 80%;
+  margin: 0 auto;
+
+  h4 {
+    margin-bottom: 10px;
+    line-height: 20px;
+    font-weight: 900;
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  form {
+    height: 40px;
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+
+    input {
+      width: 60%;
+      border: none;
+      outline: none;
+      height: 30px;
+      padding: 5px;
+    }
+
+    button {
+      width: 40%;
+      height: 30px;
+      border: none;
+      outline: none;
+      background-color: $text-secondary;
+      color: $white;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: hsl(223, 11%, 25%);
+      }
+    }
+  }
+
+  @include md {
+    width: 45%;
+    margin-left: 50%;
+  }
+}
+
+.colored-text {
+  color: $primary-color;
+}

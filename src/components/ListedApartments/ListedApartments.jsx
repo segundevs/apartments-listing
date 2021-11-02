@@ -11,13 +11,13 @@ const ListedApartments = () => {
   const responsive = {
   desktop: {
     breakpoint: { max: 1200, min: 960 },
-    items: 4,
-    slidesToSlide: 4
+    items: 3,
+    slidesToSlide: 3
   },
   tablet: {
     breakpoint: { max: 960, min: 480 },
-    items: 3,
-    slidesToSlide: 3
+    items: 2,
+    slidesToSlide: 2
   },
   mobile: {
     breakpoint: { max: 480, min: 0 },
