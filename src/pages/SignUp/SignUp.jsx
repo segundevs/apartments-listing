@@ -8,11 +8,13 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+
 import {FcGoogle} from 'react-icons/fc';
 
 import { makeStyles } from '@mui/styles';
 
 import Copyright from '../../components/Copyright';
+
 
 const useStyle = makeStyles({
    hover: {
@@ -30,23 +32,25 @@ const useStyle = makeStyles({
   }
 });
 
-const Login = () => {
+
+const SignUp = () => {
 
   const classes = useStyle();
-
-
+ 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Login....')
-  };
+    console.log('Submitting...')
+  }
 
   const handleGoogle = (e) => {
     e.preventDefault()
     console.log('handle google')
   }
 
+  
+
   return (
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" >
         <CssBaseline />
         <Box
           sx={{
@@ -60,36 +64,53 @@ const Login = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Login
+            Sign up
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="username"
+                  label="Username"
+                  autoFocus
+                />
+              </Grid>
 
-            <Typography align="center" display="flex"  alignItems="center" justifyContent="center" mt={3}>
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                />
+              </Grid>
+
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                />
+              </Grid>
+            </Grid>
+
+            <Typography align="center" display="flex"  alignItems="center" justifyContent="center" mt={2}>
                 <FcGoogle className={classes.icon}/>
                 <Link href="#" variant="body2" onClick={handleGoogle}>
-                   Login with google
+                   Signup with google
                 </Link>
-              </Typography>
+            </Typography>
+
             <Button
               type="submit"
               fullWidth
@@ -97,25 +118,20 @@ const Login = () => {
               className={classes.hover}
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Sign Up
             </Button>
-            <Grid container>
-              <Grid item xs>
+          
+              <Typography align="center">
                 <Link href="#" variant="body2">
-                  Forgot password?
+                  Already have an account? Sign in
                 </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
+              </Typography>
+             
           </Box>
         </Box>
-        <Copyright sx={{ mt: 4, mb: 4 }} />
+        <Copyright sx={{ mt: 3 }} />
       </Container>
   );
 }
 
-export default Login
+export default SignUp
