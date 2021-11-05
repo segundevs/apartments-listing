@@ -1,6 +1,6 @@
 import {createContext, useContext, useState, useEffect} from 'react';
 import {auth} from '../firebase';
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, updateProfile, signOut} from 'firebase/auth';
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, updateProfile, sendPasswordResetEmail, signOut} from 'firebase/auth';
 import { toast } from 'react-toastify';
 
 const AuthContext = createContext();
@@ -12,12 +12,13 @@ export const useAuth = () => {
 const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
+  const [token, setToken] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
 
   //Sign up
-   const signUp = async (email, password, name, profileImage) => {
+   const signUp = async (email, password, name) => {
     setLoading(false)
       await
     createUserWithEmailAndPassword(auth, email, password)
@@ -95,6 +96,27 @@ const signInWithGoogle = async() => {
     })   
   };
 
+//Send Password Reset Email
+const resetPassword = async(email) => {
+  await 
+  sendPasswordResetEmail(auth, email)
+  .then(() => {
+    setLoading(false)
+    toast.success('Please check your email to reset your password', {theme: "colored", autoClose: 2000 })
+    return true;
+  }).catch(err => {
+    if(err.message === 'Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).'){
+      setError('There is no user with this email address or the user may have been deleted')
+    } else {
+      setError(err.message)
+    } 
+      setLoading(false)
+      setTimeout(() => {
+        setError(false)
+      }, 2000)
+  })
+}
+
 //Logout
 const logOut = () => {
   signOut(auth)
@@ -107,6 +129,11 @@ const logOut = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user)
+      if(user){
+        auth.currentUser.getIdToken().then(token => {
+        setToken(token)
+      })
+      }
       setIsAuthenticating(false)
     })
 
@@ -119,15 +146,17 @@ const logOut = () => {
     isAuthenticating,
     loading,
     error,
+    token,
     signUp,
     login,
     logOut,
-    signInWithGoogle
+    signInWithGoogle,
+    resetPassword
   }
 
   return (
     <AuthContext.Provider value={values}>
-      {children}
+      {!isAuthenticating && children}
     </AuthContext.Provider>
   )
 }
