@@ -1,18 +1,17 @@
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import { useState } from 'react';
+import { useAuth } from '../../contexts/authContext';
 
+//Material UI components
+import {Avatar, Button, CssBaseline, TextField, Link, Grid, Typography, Container, Box} from '@mui/material';
+
+//Icons
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import {FcGoogle} from 'react-icons/fc';
 
+//Material UI styles
 import { makeStyles } from '@mui/styles';
 
+//Components
 import Copyright from '../../components/Copyright';
 
 
@@ -36,15 +35,41 @@ const useStyle = makeStyles({
 const SignUp = () => {
 
   const classes = useStyle();
+  const { signUp, signInWithGoogle } = useAuth();
+
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+
+  //Error states
+  const [usernameError, setUsernameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
  
-  const handleSubmit = (e) => {
+  //SignUp Account
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Submitting...')
+    setUsernameError(false)
+    setEmailError(false)
+    setPasswordError(false)
+
+    if(username === ''){
+      setUsernameError(true)
+    }
+    if(email === ''){
+      setEmailError(true)
+    }
+    if(password === ''){
+      setPasswordError(true)
+    }
+    await signUp(email, password, username);
   }
 
-  const handleGoogle = (e) => {
+  const handleGoogle = async(e) => {
     e.preventDefault()
-    console.log('handle google')
+    await signInWithGoogle()
   }
 
   
@@ -70,36 +95,46 @@ const SignUp = () => {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
+                size="small"
                   required
                   fullWidth
                   id="username"
                   label="Username"
-                  autoFocus
+                  value={username}
+                  onChange={e => setUsername(e.target.value)}
+                  error={usernameError}
                 />
               </Grid>
 
 
               <Grid item xs={12}>
                 <TextField
+                size="small"
                   required
                   fullWidth
                   id="email"
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  error={emailError}
                 />
               </Grid>
 
 
               <Grid item xs={12}>
                 <TextField
+                size="small"
                   required
                   fullWidth
                   name="password"
                   label="Password"
                   type="password"
                   id="password"
-                  autoComplete="new-password"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  error={passwordError}
                 />
               </Grid>
             </Grid>
@@ -107,7 +142,7 @@ const SignUp = () => {
             <Typography align="center" display="flex"  alignItems="center" justifyContent="center" mt={2}>
                 <FcGoogle className={classes.icon}/>
                 <Link href="#" variant="body2" onClick={handleGoogle}>
-                   Signup with google
+                   Login with google
                 </Link>
             </Typography>
 

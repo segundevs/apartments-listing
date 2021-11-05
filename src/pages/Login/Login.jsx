@@ -1,17 +1,17 @@
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import { useState } from 'react';
+import { useAuth } from '../../contexts/authContext';
+
+//Material UI components
+import {Avatar, Button, CssBaseline, TextField, Link, Grid, Typography, Container, Box} from '@mui/material';
+
+//Icons
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import {FcGoogle} from 'react-icons/fc';
 
+//Material UI styles
 import { makeStyles } from '@mui/styles';
 
+//Components
 import Copyright from '../../components/Copyright';
 
 const useStyle = makeStyles({
@@ -33,16 +33,33 @@ const useStyle = makeStyles({
 const Login = () => {
 
   const classes = useStyle();
+  const { login, signInWithGoogle } = useAuth();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+   //Error states
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Login....')
+    setEmailError(false)
+    setPasswordError(false)
+
+    if(email === ''){
+      setEmailError(true)
+    }
+    if(password === ''){
+      setPasswordError(true)
+    }
+    await login(email, password)
   };
 
-  const handleGoogle = (e) => {
+  const handleGoogle = async(e) => {
     e.preventDefault()
-    console.log('handle google')
+    await signInWithGoogle()
   }
 
   return (
@@ -64,6 +81,7 @@ const Login = () => {
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
+            size="small"
               margin="normal"
               required
               fullWidth
@@ -71,9 +89,13 @@ const Login = () => {
               label="Email Address"
               name="email"
               autoComplete="email"
-              autoFocus
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              error={emailError}  
             />
+
             <TextField
+            size="small"
               margin="normal"
               required
               fullWidth
@@ -81,7 +103,9 @@ const Login = () => {
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              error={passwordError}
             />
 
             <Typography align="center" display="flex"  alignItems="center" justifyContent="center" mt={3}>
@@ -101,12 +125,12 @@ const Login = () => {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link href="/forgotPassword" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
