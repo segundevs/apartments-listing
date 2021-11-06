@@ -9,7 +9,10 @@ import Sell from './pages/Sell/Sell';
 import SignUp from './pages/SignUp/SignUp';
 import Login from './pages/Login/Login';
 import Details from './pages/Details/Details';
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import Error from './pages/Error/Error';
+
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   const [type, setType] = useState('all');
@@ -43,9 +46,9 @@ function App() {
             setValue={setValue}
             setPrice={setPrice} />
           </Route>
-          <Route path="/sell">
+          <PrivateRoute path="/sell">
             <Sell />
-          </Route>
+          </PrivateRoute>
           <Route path="/signup">
             <SignUp />
           </Route>
@@ -54,6 +57,9 @@ function App() {
           </Route>
           <Route path="/details/:id">
             <Details />
+          </Route>
+          <Route>
+            <ForgotPassword path="/forgotPassword"/>
           </Route>
           <Route path="/*">
             <Error />
