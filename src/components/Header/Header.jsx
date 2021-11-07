@@ -9,7 +9,7 @@ import {useAuth} from '../../contexts/authContext';
 
 const Header = () => {
 
-  const {user, logOut} = useAuth();
+  const { user, logOut } = useAuth();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -43,15 +43,8 @@ const Header = () => {
           {!user && <Link to="/signup" className="nav__link login" onClick={() => setIsOpen(false)}>Sign up</Link>}
           {user && <Link to="/" className="nav__link login" onClick={()=>logOut()}>Logout</Link>}
         </div>}
-
-
-       
-
-        </div>
-
-         
+        </div>    
       </nav>
-      {console.log(user)}
     </header>
   )
 }
