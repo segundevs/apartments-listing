@@ -12,16 +12,10 @@ import Footer from '../../components/Footer/Footer';
 import './home.style.scss';
 
 
-const Home = ({location, setLocation, price, setPrice, type, setType}) => {
+const Home = () => {
   return (
     <React.Fragment>
-      <Hero 
-      location={location} 
-      setLocation={setLocation} 
-      type={type} 
-      setType={setType} 
-      price={price} 
-      setPrice={setPrice}/>
+      <Hero />
       <ListedApartments />
       <OurServices />
       <AboutSection />
