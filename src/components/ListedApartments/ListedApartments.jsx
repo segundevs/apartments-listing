@@ -1,8 +1,8 @@
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 import Carousel from 'react-multi-carousel';
+import Card from '../Card/Card';
 import 'react-multi-carousel/lib/styles.css';
-import listedHouse from '../../images/listed-house.jpg';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import './listedApartments.style.scss';
@@ -40,6 +40,17 @@ const ButtonGroup = ({ next, previous }) => {
   );
 };
 
+const [data, setData] = useState([]);
+
+useEffect(() => {
+  const getFeatured = async () => {
+    const res = await axios.get('http://localhost:8080/api/apartments?limit=4');
+    setData(res.data)
+  }
+
+  getFeatured()
+}, [])
+
 return (
     <div className="carousel__container">
         <div className="carousel__inner-text">
@@ -56,187 +67,9 @@ return (
   renderButtonGroupOutside={true}
   customButtonGroup={<ButtonGroup />}
     >
-      <div className="carousel-inner">
-        <img src={listedHouse} alt="listed-apartment" className="listed-apartment"/>
-            <div className="apartment-details">
-              <h3 className="apartment-price">$100,000</h3>
-              
-              <div className="apartment-address">
-                <div className="apartment-location">
-                  <h4 className="apartment-name">Harrison Apartments</h4>
-                  <div className="location-container">
-                  <LocationOnIcon className="location-icon"/>
-                  <p className="location-text">
-                    San Francisco, CA
-                  </p>
-                  </div>
-                </div>
-                
-                  <FavoriteIcon className="favorite-icon"/>
-              
-              </div>
-            </div>
-          </div>  
-            {/* item-2 */}
-          <div className="carousel-inner">
-            <img src={listedHouse} alt="listed-apartment" className="listed-apartment"/>
-            <div className="apartment-details">
-              <h3 className="apartment-price">$100,000</h3>
-              
-              <div className="apartment-address">
-                <div className="apartment-location">
-                  <h4 className="apartment-name">Harrison Apartments</h4>
-                  <div className="location-container">
-                  <LocationOnIcon className="location-icon"/>
-                  <p className="location-text">
-                    San Francisco, CA
-                  </p>
-                  </div>
-                </div>
-                
-                  <FavoriteIcon className="favorite-icon"/>
-            
-              </div>
-            </div>
-          </div>  
-
-          {/* item-3 */}
-         <div className="carousel-inner">
-            <img src={listedHouse} alt="listed-apartment" className="listed-apartment"/>
-            <div className="apartment-details">
-              <h3 className="apartment-price">$100,000</h3>
-              
-              <div className="apartment-address">
-                <div className="apartment-location">
-                  <h4 className="apartment-name">Harrison Apartments</h4>
-                  <div className="location-container">
-                  <LocationOnIcon className="location-icon"/>
-                  <p className="location-text">
-                    San Francisco, CA
-                  </p>
-                  </div>
-                </div>
-                
-                  <FavoriteIcon className="favorite-icon"/>
-             
-              </div>
-            </div>
-          </div>  
-          {/* item-4 */}
-          <div className="carousel-inner">
-            <img src={listedHouse} alt="listed-apartment" className="listed-apartment"/>
-            <div className="apartment-details">
-              <h3 className="apartment-price">$100,000</h3>
-              
-              <div className="apartment-address">
-                <div className="apartment-location">
-                  <h4 className="apartment-name">Harrison Apartments</h4>
-                  <div className="location-container">
-                  <LocationOnIcon className="location-icon"/>
-                  <p className="location-text">
-                    San Francisco, CA
-                  </p>
-                  </div>
-                </div>
-                
-                  <FavoriteIcon className="favorite-icon"/>
-              
-              </div>
-            </div>
-          </div>  
-
-            {/* item-5 */}
-          <div className="carousel-inner">
-            <img src={listedHouse} alt="listed-apartment" className="listed-apartment"/>
-            <div className="apartment-details">
-              <h3 className="apartment-price">$100,000</h3>
-              
-              <div className="apartment-address">
-                <div className="apartment-location">
-                  <h4 className="apartment-name">Harrison Apartments</h4>
-                  <div className="location-container">
-                  <LocationOnIcon className="location-icon"/>
-                  <p className="location-text">
-                    San Francisco, CA
-                  </p>
-                  </div>
-                </div>
-                
-                  <FavoriteIcon className="favorite-icon"/>
-                
-              </div>
-            </div>
-          </div>  
-
-          {/* item-6 */}
-          <div className="carousel-inner">
-            <img src={listedHouse} alt="listed-apartment" className="listed-apartment"/>
-            <div className="apartment-details">
-              <h3 className="apartment-price">$100,000</h3>
-              
-              <div className="apartment-address">
-                <div className="apartment-location">
-                  <h4 className="apartment-name">Harrison Apartments</h4>
-                  <div className="location-container">
-                  <LocationOnIcon className="location-icon"/>
-                  <p className="location-text">
-                    San Francisco, CA
-                  </p>
-                  </div>
-                </div>
-                
-                  <FavoriteIcon className="favorite-icon"/>
-             
-              </div>
-            </div>
-          </div>  
-
-          {/* item-7 */}
-          <div className="carousel-inner">
-            <img src={listedHouse} alt="listed-apartment" className="listed-apartment"/>
-            <div className="apartment-details">
-              <h3 className="apartment-price">$100,000</h3>
-              
-              <div className="apartment-address">
-                <div className="apartment-location">
-                  <h4 className="apartment-name">Harrison Apartments</h4>
-                  <div className="location-container">
-                  <LocationOnIcon className="location-icon"/>
-                  <p className="location-text">
-                    San Francisco, CA
-                  </p>
-                  </div>
-                </div>
-                
-                  <FavoriteIcon className="favorite-icon"/>
-           
-              </div>
-            </div>
-          </div>  
-
-          {/* item-8 */}
-          <div className="carousel-inner">
-            <img src={listedHouse} alt="listed-apartment" className="listed-apartment"/>
-            <div className="apartment-details">
-              <h3 className="apartment-price">$100,000</h3>
-              
-              <div className="apartment-address">
-                <div className="apartment-location">
-                  <h4 className="apartment-name">Harrison Apartments</h4>
-                  <div className="location-container">
-                  <LocationOnIcon className="location-icon"/>
-                  <p className="location-text">
-                    San Francisco, CA
-                  </p>
-                  </div>
-                </div>
-                
-                  <FavoriteIcon className="favorite-icon"/>
-            
-              </div>
-            </div>
-          </div>  
-        {/* </div> */}
+      {data && data.map(apt => (
+        <Card apt={apt} key={apt._id}/>
+      ))}
     </Carousel>
     </div>
   )
