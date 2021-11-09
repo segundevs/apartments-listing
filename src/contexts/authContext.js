@@ -2,7 +2,6 @@ import {createContext, useContext, useState, useEffect} from 'react';
 import {auth} from '../firebase';
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, updateProfile, sendPasswordResetEmail, signOut} from 'firebase/auth';
 import { toast } from 'react-toastify';
-import useLocalStorage from '../components/hooks/useLocalStorage';
 
 const AuthContext = createContext();
 
@@ -14,8 +13,6 @@ const AuthProvider = ({children}) => {
 
   const [user, setUser] = useState(null);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
-  // const [token, setToken] = useState(null);
-  const [token, setToken] =  useLocalStorage('token', ''); 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -132,16 +129,11 @@ const logOut = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user)
-      if(user !== null){
-        auth.currentUser.getIdToken().then(token => {
-          setToken(token)
-        })
-      }
       setIsAuthenticating(false)
     })
 
     return () => unsubscribe();
-  }, [setToken])
+  }, [])
 
 
   const values = {
@@ -149,7 +141,6 @@ const logOut = () => {
     isAuthenticating,
     loading,
     error,
-    token,
     signUp,
     login,
     logOut,

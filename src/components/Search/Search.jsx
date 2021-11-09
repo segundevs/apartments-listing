@@ -1,4 +1,6 @@
 import {Button, CssBaseline, TextField, Grid, Box, FormControl, InputLabel, Select, MenuItem, Container} from '@mui/material';
+import { useData } from '../../contexts/dataContext';
+import { useEffect } from 'react';
 
 
 import { makeStyles } from '@mui/styles';
@@ -21,12 +23,27 @@ const useStyle = makeStyles({
   }
 });
 
-const Search = ({location, setLocation, price, setPrice, type, setType, value, setValue}) => {
 
+
+const Search = () => {
   const classes = useStyle();
+  const {location, setLocation, price, setPrice, type, setType, keyword, setKeyword, getData, setData, data} = useData();
+
+
+  useEffect(()=>{
+    if(type === 'all' || price === 'all' || location === '' || keyword === ''){
+      getData()
+    }
+  },[type, location, price, getData, keyword])
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    const filteredType = data.filter(res => res.type === type);
+    const filteredLocation = data.filter(res => res.location.toLowerCase().includes(location.toLowerCase()));
+    const filteredPrice = data.filter(res => res.price <= price);
+   
+    setData(filteredType || filteredLocation || filteredPrice)
   };
 
   return (
@@ -35,23 +52,6 @@ const Search = ({location, setLocation, price, setPrice, type, setType, value, s
         <Box sx={{ marginTop: 1 }} >
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-
-               {/* <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
-                <InputLabel>Location</InputLabel>
-                <Select value={location} label="Location" onChange={(e) => setLocation(e.target.value)} className={classes.inputField}>
-                  <MenuItem value="all">All</MenuItem>
-                  <MenuItem value="abia">Abia</MenuItem>
-                  <MenuItem value="adamawa">Adamawa</MenuItem>
-                  <MenuItem value="akwa-ibom">Akwa-Ibom</MenuItem>
-                  <MenuItem value="anambra">Anambra</MenuItem>
-                  <MenuItem value="bauchi">Bauchi</MenuItem>
-                  <MenuItem value="bayelsa">Bayelsa</MenuItem>
-                  <MenuItem value="benue">Benue</MenuItem>
-                </Select>
-                </FormControl>
-              </Grid> */}
-
 
               <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
@@ -93,7 +93,7 @@ const Search = ({location, setLocation, price, setPrice, type, setType, value, s
               </Grid>
 
               <Grid item xs={12} sm={6}>
-                <TextField fullWidth label="Keywords (bedroom, pool, mall)" value={value} onChange={(e) => setValue(e.target.value)}  size="small"/>
+                <TextField fullWidth label="Keywords (bedroom, pool, mall)" value={keyword} onChange={(e) => setKeyword(e.target.value)}  size="small"/>
               </Grid>
 
             </Grid>
