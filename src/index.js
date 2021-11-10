@@ -4,6 +4,7 @@ import './index.scss';
 import App from './App';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AuthProvider from './contexts/authContext';
+import DataProvider from './contexts/dataContext';
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -24,7 +25,9 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <AuthProvider>
-        <App />
+        <DataProvider>
+          <App />
+        </DataProvider>
         <ToastContainer closeButton={true} position="top-center" />
       </AuthProvider>
     </ThemeProvider>
