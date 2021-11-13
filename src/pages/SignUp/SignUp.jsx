@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../../contexts/authContext';
+import AuthError from '../../components/AuthError/AuthError';
+import ButtonLoader from '../../components/ButtonLoader';
 
 //Material UI components
 import {Avatar, Button, CssBaseline, TextField, Link, Grid, Typography, Container, Box} from '@mui/material';
@@ -35,7 +37,7 @@ const useStyle = makeStyles({
 const SignUp = () => {
 
   const classes = useStyle();
-  const { signUp, signInWithGoogle } = useAuth();
+  const { signUp, signInWithGoogle, error, loading } = useAuth();
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -92,6 +94,8 @@ const SignUp = () => {
             Sign up
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            {error && <AuthError component={error}/>}
+
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
@@ -153,11 +157,11 @@ const SignUp = () => {
               className={classes.hover}
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              { loading ? <ButtonLoader /> : 'Sign Up' }
             </Button>
           
               <Typography align="center">
-                <Link href="#" variant="body2">
+                <Link href="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Typography>
