@@ -1,0 +1,80 @@
+@import "../../styles/variables";
+@import "../../styles/breakpoints";
+
+.sell-header {
+  text-align: center;
+  width: 80%;
+  margin: 10px auto;
+  color: $text-secondary;
+}
+
+.sell__container {
+  width: 80%;
+  margin: 10px auto 20px auto;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  border-radius: 5px;
+
+  @include md {
+    width: 50%;
+  }
+
+  .input__container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+
+    label {
+      margin-bottom: 5px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: $text-secondary;
+    }
+
+    input,
+    select {
+      height: 30px;
+      width: 100%;
+      outline: none;
+      border: none;
+      padding: 5px;
+      box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+        rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+    }
+
+    textarea {
+      height: 80px;
+      width: 100%;
+      outline: none;
+      border: none;
+      box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+        rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+    }
+  }
+
+  .upload-btn {
+    width: 100%;
+    height: 30px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: $primary-color;
+    color: $white;
+    font-weight: 600;
+
+    &:hover {
+      background-color: $white;
+      color: $primary-color;
+      outline: 1px solid $primary-color;
+    }
+  }
+}
+
+.progress-bar {
+  background-color: $primary-color;
+  font-size: small;
+  height: 3px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
