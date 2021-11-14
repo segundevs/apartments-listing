@@ -1,0 +1,35 @@
+@import "../../styles//breakpoints";
+@import "../../styles/variables";
+
+.buy-container {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1;
+
+  @include sm {
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include lg {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include xl {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.buy-header {
+  text-align: center;
+  padding-top: 20px;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: $text-secondary;
+  text-transform: capitalize;
+}
