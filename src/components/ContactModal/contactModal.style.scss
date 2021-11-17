@@ -1,0 +1,72 @@
+@import "../../styles/variables";
+@import "../../styles/breakpoints";
+
+.form__container {
+  width: 250px;
+  height: 450px;
+  display: flex;
+  padding: 5px;
+  flex-direction: column;
+  color: $text-secondary;
+
+  @include md {
+    width: 280px;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+  }
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+  label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  input {
+    width: 100%;
+    height: 25px;
+    border: none;
+    outline: 1px solid gray;
+    border-radius: 2px;
+    padding: 2px;
+  }
+
+  textarea {
+    height: 80px;
+    margin-bottom: 10px;
+    border: none;
+    outline: 1px solid gray;
+    padding: 2px;
+  }
+}
+
+.enquiry-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  height: 30px;
+  background-color: $primary-color;
+  color: $white;
+}
+
+input:hover,
+textarea:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+input:active,
+textarea:active {
+  outline: 2px solid $primary-color;
+}
+
+input[name="display-name"] {
+  text-transform: capitalize;
+}
