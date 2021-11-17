@@ -61,7 +61,7 @@ return (
     swipeable={true}
   draggable={true}
   infinite={true}
-  showDots={true}
+  // showDots={true}
   arrows={false} 
   ssr={true}
   renderButtonGroupOutside={true}
