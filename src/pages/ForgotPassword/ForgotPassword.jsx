@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../../contexts/authContext';
+import AuthError from '../../components/AuthError/AuthError';
 
 //Material UI components
 import { Button, CssBaseline, TextField, Typography, Container, Box} from '@mui/material';
@@ -23,7 +24,7 @@ const useStyle = makeStyles({
 const ForgotPassword = () => {
 
   const classes = useStyle();
-  const { resetPassword } = useAuth();
+  const { resetPassword, error } = useAuth();
 
   const [email, setEmail] = useState('');
 
@@ -48,6 +49,7 @@ const ForgotPassword = () => {
             Forgotten Password
           </Typography>
           <Box component="form" onSubmit={handlePasswordReset} noValidate>
+            {error && <AuthError component={error}/>}
             <TextField
               margin="normal"
               size="small"
