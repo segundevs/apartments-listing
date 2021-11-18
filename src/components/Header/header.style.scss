@@ -19,9 +19,14 @@
   align-items: center;
   height: 40px;
 
+  // .nav__brand {
+  //   height: 500%;
+  //   margin-left: -55px;
+  // }
+
   .nav__brand {
-    height: 500%;
-    margin-left: -55px;
+    text-decoration: none;
+    color: $primary-color;
   }
 }
 

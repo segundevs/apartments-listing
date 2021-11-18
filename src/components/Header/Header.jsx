@@ -2,7 +2,7 @@ import {useState} from 'react';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import logo from '../../images/logo.png';
+// import logo from '../../images/logo.png';
 import './header.style.scss'
 
 import {useAuth} from '../../contexts/authContext';
@@ -16,9 +16,10 @@ const Header = () => {
   return (
    <header className="header">
       <nav className="navbar">
-       {/* <Link to="/" className="nav__brand"> */}
-        <img src={logo} alt="brand-logo" className="nav__brand"/>
-       {/* </Link> */}
+       <Link to="/" className="nav__brand">
+        {/* <img src={logo} alt="brand-logo" className="nav__brand"/> */}
+        <h3>Apartments</h3>
+       </Link>
         
         <div className="navbar__links-container">
 
