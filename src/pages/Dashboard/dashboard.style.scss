@@ -1,0 +1,62 @@
+@import "../../styles/variables";
+@import "../../styles/breakpoints";
+
+.dashboard__container {
+  width: 90%;
+  margin: 80px auto 20px auto;
+  color: $text-secondary;
+
+  h2 {
+    text-transform: capitalize;
+    text-align: center;
+    color: $primary-color;
+    margin-bottom: 10px;
+  }
+
+  h4 {
+    text-transform: capitalize;
+    margin-bottom: 20px;
+  }
+
+  @include md {
+    width: 80%;
+  }
+}
+
+.dashboard-card {
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 5px;
+  margin-bottom: 10px;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+
+  .dashboard__details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    > * {
+      width: 35%;
+    }
+
+    .delete-icon {
+      color: red;
+      cursor: pointer;
+      width: 10%;
+    }
+
+    .edit-icon {
+      color: blue;
+      cursor: pointer;
+      width: 10%;
+    }
+
+    .more-icon {
+      color: $primary-color;
+      cursor: pointer;
+      width: 10%;
+    }
+  }
+}
