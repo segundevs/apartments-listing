@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Search from '../../components/Search/Search';
 import Card from '../../components/Card/Card';
 
@@ -8,12 +8,8 @@ import './buy.style.scss';
 
 const Buy = () => {
 
-  const {data, getData} = useData();
+  const { data } = useData();
 
-  useEffect(()=>{
-    getData()
-  }, [getData])
-  
   return (
     <React.Fragment>
       <h4 className="buy-header">Search for properties...</h4>
