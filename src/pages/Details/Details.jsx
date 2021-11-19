@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ContactModal from '../../components/ContactModal/ContactModal';
-import listedHouse from '../../images/listed-house.jpg';
 import axios from 'axios';
-
 import './details.style.scss';
 
 const Details = () => {
@@ -14,16 +12,18 @@ const Details = () => {
   useEffect(() => {
     const getListing = async  () => {
       const res = await axios.get(`http://localhost:8080/api/apartments/${id}`)
-      setListing(res.data)
+      setListing(res.data) 
     }
     getListing()
   }, [id])
 
   return (
-    <div className="details__container">
+    <React.Fragment>
+    {listing && 
+    (<div className="details__container">
       <ContactModal open={open} setOpen={setOpen} listing={listing}/>
       <div className="img-container">
-        <img src={listing.imageUrl ? listing.imageUrl : listedHouse} alt={listing.type} />
+        <img src={listing.imageUrl} alt={listing.type} />
       </div>
       <div className="listing-container">
         <div className="listing-left">
@@ -42,7 +42,8 @@ const Details = () => {
           <button className="contact-btn" onClick={() => setOpen(true)}>Make Enquiry</button>
         </div>
       </div>
-    </div>
+    </div>)}
+  </React.Fragment>
   )
 }
 

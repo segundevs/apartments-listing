@@ -1,6 +1,5 @@
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-import listedHouse from '../../images/listed-house.jpg';
 import { Link } from 'react-router-dom';
 
 import './card.style.scss';
@@ -9,7 +8,7 @@ const Card = ({apt}) => {
 
   return (
     <div className="card-inner">
-      <img src={apt.imageUrl ? apt.imageUrl : listedHouse} alt="listed-apartment" className="card-listed-apartment"/>
+      <img src={apt.imageUrl} alt="listed-apartment" className="card-listed-apartment"/>
       <div className="card-apartment-details">
         <h3># {apt.price.toLocaleString()}</h3>  
         <div className="card-apartment-address">
