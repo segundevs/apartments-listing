@@ -25,15 +25,26 @@
 
 .listing-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin-top: 20px;
 
+  @include lg {
+    flex-direction: row;
+  }
+
   .listing-right {
-    width: 50%;
+    width: 100%;
+    @include lg {
+      width: 50%;
+    }
   }
 
   .listing-left {
-    width: 50%;
+    width: 100%;
+    @include lg {
+      width: 50%;
+    }
   }
 
   p {
