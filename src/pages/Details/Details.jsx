@@ -18,9 +18,7 @@ const Details = () => {
   }, [id])
 
   return (
-    <React.Fragment>
-    {listing && 
-    (<div className="details__container">
+   <div className="details__container">
       <ContactModal open={open} setOpen={setOpen} listing={listing}/>
       <div className="img-container">
         <img src={listing.imageUrl} alt={listing.type} />
@@ -42,8 +40,7 @@ const Details = () => {
           <button className="contact-btn" onClick={() => setOpen(true)}>Make Enquiry</button>
         </div>
       </div>
-    </div>)}
-  </React.Fragment>
+    </div>
   )
 }
 
