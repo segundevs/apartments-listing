@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 
@@ -10,16 +9,12 @@ import SignUp from './pages/SignUp/SignUp';
 import Login from './pages/Login/Login';
 import Details from './pages/Details/Details';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
+import Dashboard from './pages/Dashboard/Dashboard';
 import Error from './pages/Error/Error';
 
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {
-  const [type, setType] = useState('all');
-  const [price, setPrice] = useState('all');
-  const [location, setLocation] = useState('');
-  const [value, setValue] = useState('');
-
 
   return (
     <Router >
@@ -27,24 +22,10 @@ function App() {
       <div className="app-container">
         <Switch>
           <Route path="/" exact>
-            <Home 
-            location={location} 
-            setLocation={setLocation} 
-            type={type} 
-            setType={setType} 
-            price={price} 
-            setPrice={setPrice} />
+            <Home />
           </Route>
           <Route path="/buy">
-            <Buy 
-            location={location} 
-            setLocation={setLocation} 
-            type={type} 
-            setType={setType} 
-            price={price} 
-            value={value}
-            setValue={setValue}
-            setPrice={setPrice} />
+            <Buy />
           </Route>
           <PrivateRoute path="/sell">
             <Sell />
@@ -58,10 +39,13 @@ function App() {
           <Route path="/details/:id">
             <Details />
           </Route>
-          <Route>
-            <ForgotPassword path="/forgotPassword"/>
+          <Route path="/password-reset">
+            <ForgotPassword />
           </Route>
-          <Route path="/*">
+          <PrivateRoute path="/dashboard">
+            <Dashboard />
+          </PrivateRoute>
+          <Route path="*">
             <Error />
           </Route>
         </Switch>
