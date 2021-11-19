@@ -2,7 +2,7 @@
 @import "../../styles/breakpoints";
 
 .dashboard__container {
-  width: 90%;
+  width: 95%;
   margin: 80px auto 20px auto;
   color: $text-secondary;
 
@@ -34,29 +34,32 @@
 
   .dashboard__details {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    word-wrap: break-word;
+    white-space: pre-wrap;
     align-items: center;
 
-    > * {
-      width: 35%;
+    .dashboard__details-type {
+      width: 30%;
+    }
+
+    .dashboard__details-location {
+      width: 40%;
     }
 
     .delete-icon {
-      color: red;
       cursor: pointer;
-      width: 10%;
+      color: red;
     }
 
     .edit-icon {
-      color: blue;
       cursor: pointer;
-      width: 10%;
+      color: blue;
     }
 
     .more-icon {
-      color: $primary-color;
       cursor: pointer;
-      width: 10%;
+      color: $primary-color;
     }
   }
 }
