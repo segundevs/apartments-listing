@@ -171,7 +171,7 @@ const Sell = () => {
 
         <div className="input__container">
           <label>Apartment photo</label>
-          <input type="file" onChange={handleFile} required />
+          <input type="file" onChange={handleFile} />
           <div className="progress-bar" style={{width: `${progress}%`}}>{`${Math.round(progress)}%`}</div>
         </div>
 
