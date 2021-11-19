@@ -44,7 +44,7 @@ const [data, setData] = useState([]);
 
 useEffect(() => {
   const getFeatured = async () => {
-    const res = await axios.get('http://localhost:8080/api/apartments?limit=4');
+    const res = await axios.get('https://apatmentshub.herokuapp.com/api/apartments?limit=6');
     setData(res.data)
   }
 
