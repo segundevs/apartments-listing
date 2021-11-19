@@ -11,7 +11,7 @@ const Details = () => {
 
   useEffect(() => {
     const getListing = async  () => {
-      const res = await axios.get(`http://localhost:8080/api/apartments/${id}`)
+      const res = await axios.get(`https://apatmentshub.herokuapp.com/api/apartments/${id}`)
       setListing(res.data) 
     }
     getListing()
