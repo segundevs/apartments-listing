@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useAuth } from '../../contexts/authContext';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 import './contactModal.style.scss';
 
 
@@ -13,9 +15,22 @@ const ContactModal = ({open, setOpen, listing}) => {
   const [username, setUsername] = useState(user? user.displayName : '');
   const [email, setEmail] = useState(user ? user.email : '');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     console.log('submitting')
+    try{
+      await axios.post(`http://localhost:8080/mail`, {
+      mail: email,
+      username: username,
+      email: listing.email,
+      subject: `Enquiry for ${listing.bedrooms} bedrooms ${listing.type}, ${listing.location}`,
+      message: message
+    })
+    toast.success('Realtor will get back to you shortly', {theme: "colored", autoClose: 2000 })
+    }catch(err){
+      console.log(err.message)
+    }
+    
     setOpen(false)
     
   }
