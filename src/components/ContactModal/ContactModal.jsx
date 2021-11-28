@@ -5,7 +5,6 @@ import { Modal } from 'react-responsive-modal';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import AuthError from '../AuthError/AuthError';
-import ButtonLoader from '../ButtonLoader';
 import './contactModal.style.scss';
 
 
@@ -65,7 +64,7 @@ const ContactModal = ({open, setOpen, listing}) => {
           <label>Message</label>
           <textarea value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
         </div>
-        <button type="submit" className="enquiry-btn">{loading ? <ButtonLoader /> : 'Send'}</button>
+        <button type="submit" className="enquiry-btn">{loading ? 'Sending...' : 'Send'}</button>
       </form>
     </Modal>
   )
