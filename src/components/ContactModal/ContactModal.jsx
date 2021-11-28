@@ -4,10 +4,12 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import {auth} from '../../firebase';
 import './contactModal.style.scss';
 
 
 const ContactModal = ({open, setOpen, listing}) => {
+  
 
   const { user } = useAuth();
   const [phone, setPhone] = useState('');
@@ -17,22 +19,23 @@ const ContactModal = ({open, setOpen, listing}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const token = await auth.currentUser.getIdToken();
     console.log('submitting')
     try{
-      await axios.post(`http://localhost:8080/mail`, {
-      mail: email,
+      await axios.post(`https://apatmentshub.herokuapp.com/api/apartments/mail`, {
+      senderEmail: email,
       username: username,
-      email: listing.email,
+      receiverEmail: listing.email,
       subject: `Enquiry for ${listing.bedrooms} bedrooms ${listing.type}, ${listing.location}`,
       message: message
-    })
+    },{headers: {
+        'Authorization': `Bearer ${token}`
+      }})
     toast.success('Realtor will get back to you shortly', {theme: "colored", autoClose: 2000 })
     }catch(err){
       console.log(err.message)
-    }
-    
-    setOpen(false)
-    
+    }  
+    setOpen(false)  
   }
 
   return (

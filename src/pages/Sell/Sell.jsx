@@ -20,7 +20,7 @@ const Sell = () => {
   const edit = data.find(res => res._id === id);
 
   const [listingData, setListingData] = useState({
-    price: '', bedrooms: '', bathrooms: '', garage: '', description: '', size: '', address: '', location: '', type: 'bungalow', progress: ''
+    price: '', bedrooms: '', bathrooms: '', garage: '', description: '', size: '', address: '', location: '', type: 'bungalow'
   })
   
   useEffect(() => {
@@ -110,6 +110,7 @@ const Sell = () => {
       <h2 className="sell-header">{id ? 'Edit and update your listing' : 'Upload an apartment listing'}</h2>
       {uploadErr && <AuthError component={uploadErr}/>}
       <form className="sell__container" onSubmit={handleSubmit}>
+       
         <div className="input__container">
           <label>Realtor</label>
           <input type="text" value={user && user.displayName} disabled className="username"/>
