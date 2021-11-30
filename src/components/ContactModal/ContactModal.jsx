@@ -11,16 +11,17 @@ import './contactModal.style.scss';
 const ContactModal = ({open, setOpen, listing}) => {
   
   const { user } = useAuth();
-  const [phone, setPhone] = useState('');
+ 
   const [message, setMessage] = useState('');
   const [username, setUsername] = useState(user? user.displayName : '');
   const [email, setEmail] = useState(user ? user.email : '');
+  const [phone, setPhone] = useState('');
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const url = "https://apatmentshub.herokuapp.com/api/apartments/mail";
+    const url = "https://apatmentshub.herokuapp.com/api/apartments/mail"
     setLoading(true)
     try{
       await axios.post(url, {
@@ -28,6 +29,7 @@ const ContactModal = ({open, setOpen, listing}) => {
       username: username,
       receiverEmail: listing.email,
       subject: `Enquiry for ${listing.bedrooms} bedrooms ${listing.type}, ${listing.location}`,
+      phone: phone,
       message: message
     })
     setLoading(false)
@@ -64,7 +66,7 @@ const ContactModal = ({open, setOpen, listing}) => {
           <label>Message</label>
           <textarea value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
         </div>
-        <button type="submit" className="enquiry-btn">{loading ? 'Sending...' : 'Send'}</button>
+        <button type="submit" className="enquiry-btn">{loading ? 'Sending mail' : 'Send'}</button>
       </form>
     </Modal>
   )

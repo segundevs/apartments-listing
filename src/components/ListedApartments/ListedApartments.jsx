@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Carousel from 'react-multi-carousel';
-import Card from '../Card/Card';
 import 'react-multi-carousel/lib/styles.css';
+import Card from '../Card/Card';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import './listedApartments.style.scss';
@@ -57,15 +57,14 @@ return (
           <h2 className="carousel__header">New Listed Apartments</h2>
           <p className="carousel__text">With over 1million+ homes for sale, all available on the apartments website</p>
       </div>
-    <Carousel  responsive={responsive}
+    <Carousel
+    responsive={responsive}
     swipeable={true}
-  draggable={true}
-  infinite={true}
-  // showDots={true}
-  arrows={false} 
-  ssr={true}
-  renderButtonGroupOutside={true}
-  customButtonGroup={<ButtonGroup />}
+    draggable={true}
+    infinite={true}
+    arrows={false} 
+    renderButtonGroupOutside={true}
+    customButtonGroup={<ButtonGroup />}
     >
       {data && data.map(apt => (
         <Card apt={apt} key={apt._id}/>
