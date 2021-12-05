@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import ContactModal from '../../components/ContactModal/ContactModal';
+import {MdOutlineArrowBack} from 'react-icons/md';
 import axios from 'axios';
 import './details.style.scss';
 
 const Details = () => {
   const { id } = useParams();
+  const history = useHistory();
   const [listing, setListing] = useState([]);
   const [open, setOpen] = useState(false);
 
@@ -20,7 +22,9 @@ const Details = () => {
   return (
    <div className="details__container">
       <ContactModal open={open} setOpen={setOpen} listing={listing}/>
+       
       <div className="img-container">
+        <button onClick={() => history.goBack('-1')} className="back-btn"><MdOutlineArrowBack className="icon"/>  Go back</button>
         <img src={listing.imageUrl} alt={listing.type} />
       </div>
       <div className="listing-container">

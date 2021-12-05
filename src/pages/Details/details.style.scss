@@ -9,6 +9,24 @@
     width: 70%;
     margin: 40px auto;
   }
+
+  .back-btn {
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    border: none;
+    outline: none;
+    width: 100px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    background-color: #fff;
+    color: $primary-color;
+    text-align: left;
+
+    @include md {
+      font-size: 16px;
+    }
+  }
 }
 
 .img-container {
