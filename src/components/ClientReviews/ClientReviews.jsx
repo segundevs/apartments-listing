@@ -9,18 +9,21 @@ import './clientReviews.style.scss';
 const ClientReviews = () => {
 
   const responsive = {
-  desktop: {
-    breakpoint: { max: 1200, min: 960 },
+ desktop: {
+    // breakpoint: { max: 1200, min: 960 },
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+    slidesToSlide: 3
+  },
+  tablet: {
+    // breakpoint: { max: 960, min: 480 },
+    breakpoint: { max: 1024, min: 464 },
     items: 2,
     slidesToSlide: 2
   },
-  tablet: {
-    breakpoint: { max: 960, min: 480 },
-    items: 1,
-    slidesToSlide: 1
-  },
   mobile: {
-    breakpoint: { max: 480, min: 0 },
+    // breakpoint: { max: 480, min: 0 },
+    breakpoint: { max: 464, min: 0 },
     items: 1,
     slidesToSlide: 1
   }
