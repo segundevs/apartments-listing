@@ -37,7 +37,7 @@ const useStyle = makeStyles({
 const SignUp = () => {
 
   const classes = useStyle();
-  const { signUp, signInWithGoogle, error, loading } = useAuth();
+  const { signUp, logOut, signInWithGoogle, error, loading } = useAuth();
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -67,6 +67,7 @@ const SignUp = () => {
       setPasswordError(true)
     }
     await signUp(email, password, username);
+    logOut();
   }
 
   const handleGoogle = async(e) => {
