@@ -1,0 +1,28 @@
+@import "../../styles/variables";
+
+.skeleton_container {
+  background-color: $listing-bg;
+  border-radius: 10px;
+  margin: 30px 20px;
+  width: 320px;
+  height: 300px;
+  animation: skeletonLoading 1.8s linear infinite;
+}
+
+@keyframes skeletonLoading {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}

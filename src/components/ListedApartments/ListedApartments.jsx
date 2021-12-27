@@ -5,6 +5,7 @@ import 'react-multi-carousel/lib/styles.css';
 import Card from '../Card/Card';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import Skeleton from '../Skeleton/Skeleton';
 import './listedApartments.style.scss';
 
 const ListedApartments = () => {
@@ -44,11 +45,19 @@ const ButtonGroup = ({ next, previous }) => {
 };
 
 const [data, setData] = useState([]);
+const [loading, setLoading] = useState(false);
 
 useEffect(() => {
   const getFeatured = async () => {
-    const res = await axios.get('https://apatmentshub.herokuapp.com/api/apartments?limit=6');
-    setData(res.data)
+    setLoading(true)
+    try {
+      const res = await axios.get('https://apatmentshub.herokuapp.com/api/apartments?limit=6');
+      setData(res.data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error.message)
+      setLoading(false)
+    }   
   }
 
   getFeatured()
@@ -69,6 +78,7 @@ return (
     renderButtonGroupOutside={true}
     customButtonGroup={<ButtonGroup />}
     >
+      {loading && <Skeleton />}
       {data && data.map(apt => (
         <Card apt={apt} key={apt._id}/>
       ))}
