@@ -45,9 +45,6 @@ const AuthProvider = ({ children }) => {
       .catch((err) => {
         setError(err.message);
         setLoading(false);
-        setTimeout(() => {
-          setError(false);
-        }, 5000);
       });
   };
 
@@ -69,9 +66,6 @@ const AuthProvider = ({ children }) => {
         console.log(err.message);
         setError(err.message);
         setLoading(false);
-        setTimeout(() => {
-          setError(false);
-        }, 5000);
       });
   };
 
@@ -113,9 +107,6 @@ const AuthProvider = ({ children }) => {
       .catch((err) => {
         setError(err.message);
         setLoading(false);
-        setTimeout(() => {
-          setError(false);
-        }, 5000);
       });
   };
 

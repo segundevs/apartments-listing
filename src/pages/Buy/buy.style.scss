@@ -7,20 +7,38 @@
   display: grid;
   grid-template-columns: 1;
 
+  .no_match-err {
+    width: 50%;
+    margin: 10% auto;
+    text-align: center;
+  }
+
   @include sm {
     width: 95%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+
+    .no_match-err {
+      grid-column: span 2;
+    }
   }
 
   @include lg {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+
+    .no_match-err {
+      grid-column: span 3;
+    }
   }
 
   @include xl {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+
+    .no_match-err {
+      grid-column: span 4;
+    }
   }
 }
 

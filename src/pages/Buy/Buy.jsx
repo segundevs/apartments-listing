@@ -14,12 +14,12 @@ const Buy = () => {
     <React.Fragment>
       <h4 className="buy-header">Search for properties...</h4>
       <Search />
+      {loading && <PageLoader/>}
       <div className="buy-container">
-        {loading && <PageLoader />}
         {err && <AuthError component={err} />}
-        {data && data.map(apt => (
+        {data && data.length >= 1 ? data.map(apt => (
           <Card apt={apt} key={apt._id} />
-        ))}  
+        )) : (!loading && <p className='no_match-err'>No matches found</p>)}  
       </div>
     </React.Fragment>
   )

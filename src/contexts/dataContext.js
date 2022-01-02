@@ -37,7 +37,7 @@ const DataProvider = ({ children }) => {
         setLoading(false);
       }
     } else {
-      setLoading(false);
+      setLoading(true);
       try {
         const res = await axios.get(
           `${url}?q=${keyword}+${type}+${location}+${price}`
