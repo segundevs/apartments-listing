@@ -19,11 +19,6 @@
   align-items: center;
   height: 40px;
 
-  // .nav__brand {
-  //   height: 500%;
-  //   margin-left: -55px;
-  // }
-
   .nav__brand {
     text-decoration: none;
     color: $primary-color;
@@ -49,7 +44,7 @@
   color: $text-secondary;
   padding: 8px 15px;
 
-  &:hover {
+  &:hover:not(.login) {
     border-bottom: 2px solid $secondary-color;
     margin-bottom: -2px;
   }
@@ -102,7 +97,7 @@
   &:hover {
     background-color: $primary-color;
     color: $white;
-    border: 1px solid $primary-color;
+    border: -1px solid $primary-color;
 
     @include md {
       background-color: $white;

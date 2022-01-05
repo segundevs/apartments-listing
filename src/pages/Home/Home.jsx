@@ -8,6 +8,7 @@ import VideoComp from '../../components/VideoComp/VideoComp';
 import ClientReviews from '../../components/ClientReviews/ClientReviews';
 import GetListed from '../../components/GetListed/GetListed';
 import Footer from '../../components/Footer/Footer';
+import Copyright from '../../components/Copyright';
 
 import './home.style.scss';
 
@@ -24,6 +25,7 @@ const Home = () => {
       <ClientReviews />
       <GetListed />
       <Footer />
+      <Copyright />
     </React.Fragment>
   )
 }

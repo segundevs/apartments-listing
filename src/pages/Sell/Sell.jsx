@@ -118,12 +118,12 @@ const Sell = () => {
 
         <div className="input__container">
           <label>Asking Price</label>
-          <input type="number" value={listingData.price} onChange={(e) => setListingData({...listingData, price: e.target.value})} required placeholder="Enter your asking price"/>
+          <input type="number" value={listingData.price} onChange={(e) => setListingData({...listingData, price: e.target.value})} required />
         </div>
 
         <div className="input__container">
           <label>Size in square feet</label>
-          <input type="number" value={listingData.size} onChange={(e) => setListingData({...listingData, size: e.target.value})} required placeholder="Enter size of property in square feet"/>
+          <input type="number" value={listingData.size} onChange={(e) => setListingData({...listingData, size: e.target.value})} required />
         </div>
 
         <div className="input__container">
@@ -142,32 +142,32 @@ const Sell = () => {
 
         <div className="input__container">
           <label>Number of bedrooms</label>
-          <input type="number" value={listingData.bedrooms} onChange={(e) => setListingData({...listingData, bedrooms: e.target.value})} required placeholder="Enter number of bedrooms"/>
+          <input type="number" value={listingData.bedrooms} onChange={(e) => setListingData({...listingData, bedrooms: e.target.value})} required />
         </div>
 
         <div className="input__container">
           <label>Number of bathrooms</label>
-          <input type="number" value={listingData.bathrooms} onChange={(e) => setListingData({...listingData, bathrooms: e.target.value})} required placeholder="Enter number of bathrooms"/>
+          <input type="number" value={listingData.bathrooms} onChange={(e) => setListingData({...listingData, bathrooms: e.target.value})} required />
         </div>
 
         <div className="input__container">
           <label>Garage</label>
-          <input type="number" value={listingData.garage} onChange={(e) => setListingData({...listingData, garage: e.target.value})} required placeholder="Enter number of garage"/>
+          <input type="number" value={listingData.garage} onChange={(e) => setListingData({...listingData, garage: e.target.value})} required />
         </div>
 
         <div className="input__container">
           <label>Location</label>
-          <input type="text" value={listingData.location} onChange={(e) => setListingData({...listingData, location: e.target.value})} required placeholder="Please enter the city property is located"/>
+          <input type="text" value={listingData.location} onChange={(e) => setListingData({...listingData, location: e.target.value})} required placeholder="City"/>
         </div>
 
         <div className="input__container">
           <label>Address</label>
-          <input type="text" value={listingData.address} onChange={(e) => setListingData({...listingData, address: e.target.value})} required placeholder="Enter address of property"/>
+          <input type="text" value={listingData.address} onChange={(e) => setListingData({...listingData, address: e.target.value})} required />
         </div>
 
         <div className="input__container">
           <label>Description</label>
-          <textarea cols="20" rows="10" value={listingData.description} onChange={(e) => setListingData({...listingData, description: e.target.value})} required placeholder="Enter a brief description of the property"></textarea>
+          <textarea cols="20" rows="10" value={listingData.description} onChange={(e) => setListingData({...listingData, description: e.target.value})} required placeholder="Brief description of property"></textarea>
         </div> 
 
         <div className="input__container">

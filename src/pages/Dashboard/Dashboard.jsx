@@ -57,8 +57,8 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard__container">
-      <h2>{`${user.displayName}'s dashboard`}</h2>
-      <h4>{`Welcome ${user.displayName}, ${currentUserData.length > 0 ? 'view your current listings below' : 'you currently do not have any listing'}`}</h4>
+      <h2>{`Welcome ${user.displayName}`}</h2>
+      <p>{`${currentUserData.length > 0 ? 'View your current listings below' : 'There\'s nothing to see here yet'}`}</p>
       {/* If current user has listing, display them, else display null */}
       {currentUserData ? currentUserData.map(apt => (
         <div className="dashboard-card" key={apt._id}>
