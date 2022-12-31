@@ -51,7 +51,7 @@ useEffect(() => {
   const getFeatured = async () => {
     setLoading(true)
     try {
-      const res = await axios.get('https://apatmentshub.herokuapp.com/api/apartments?limit=6');
+      const res = await axios.get('https://api-apartments.cyclic.app/api/apartments?limit=6');
       setData(res.data);
       setLoading(false);
     } catch (error) {
@@ -68,7 +68,7 @@ return (
         <div className="carousel__inner-text">
           <h2 className="carousel__header">New Listed Apartments</h2>
           <p className="carousel__text">With over 1million+ homes for sale, all available on the apartments website</p>
-      </div>
+        </div>
     <Carousel
     responsive={responsive}
     swipeable={true}
