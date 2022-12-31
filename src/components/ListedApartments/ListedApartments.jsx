@@ -51,7 +51,7 @@ useEffect(() => {
   const getFeatured = async () => {
     setLoading(true)
     try {
-      const res = await axios.get('https://api-apartments.cyclic.app/api/apartments?limit=6');
+      const res = await axios.get('https://apartments.cyclic.app/api/apartments?limit=6');
       setData(res.data);
       setLoading(false);
     } catch (error) {

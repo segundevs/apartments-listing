@@ -21,7 +21,7 @@ const ContactModal = ({open, setOpen, listing}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const url = "https://apatmentshub.herokuapp.com/api/apartments/mail"
+    const url = "https://apartments.cyclic.app/api/apartments/mail"
     setLoading(true)
     try{
       await axios.post(url, {

@@ -23,7 +23,7 @@ const DataProvider = ({ children }) => {
 
   const [data, setData] = useState([]);
 
-  const url = "https://api-apartments.cyclic.app/api/apartments";
+  const url = "https://apartments.cyclic.app/api/apartments";
 
   const getData = useCallback(async () => {
     if (type === "all" && price === "" && location === "" && keyword === "") {
